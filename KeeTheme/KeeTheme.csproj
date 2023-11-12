@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>KeeTheme</RootNamespace>
     <AssemblyName>KeeTheme</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <TargetFrameworkProfile />
@@ -36,7 +36,7 @@
   <ItemGroup>
     <Reference Include="KeePass, Version=2.42.1.23464, Culture=neutral, PublicKeyToken=fed2ed7716aecf5c, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>C:\Program Files\KeePass Password Safe 2\KeePass.exe</HintPath>
+      <HintPath>C:\Program Files (x86)\KeePass2x\KeePass.exe</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,7 +77,6 @@
     <Compile Include="FormAddedEventHandler.cs" />
     <Compile Include="FormsArrayList.cs" />
     <Compile Include="Options\KeeThemeOptions.cs" />
-    <Compile Include="Scrollbars.cs" />
     <Compile Include="TemplateFile.cs" />
     <Compile Include="TemplateReader.cs" />
     <Compile Include="Theme\ButtonLook.cs" />
@@ -135,6 +134,7 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy /Y $(TargetPath) $(SolutionDir)\..\KeePass\Plugins</PostBuildEvent>
+    <PostBuildEvent>
+    </PostBuildEvent>
   </PropertyGroup>
 </Project>
