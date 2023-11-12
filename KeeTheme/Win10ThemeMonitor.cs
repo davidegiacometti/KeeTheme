@@ -34,7 +34,7 @@ namespace KeeTheme
 				SystemEvents.UserPreferenceChanged += HandleUserPreferenceChanged;
 			}
 		}
-		
+
 		private void HandleAutoSyncWithWin10ThemeChanged(bool value)
 		{
 			ApplyTheme();
@@ -47,34 +47,28 @@ namespace KeeTheme
 
 		private void ApplyTheme()
 		{
-			if (_options.AutoSyncWithWin10Theme) 
+			if (_options.AutoSyncWithWin10Theme)
 				_options.Enabled = IsDarkThemeEnabled();
 		}
 
 		private bool IsDarkThemeEnabled()
 		{
 			var key = Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\Themes\Personalize");
-			return key != null && (int) key.GetValue("AppsUseLightTheme", 1) != 1;
+			return key != null && (int)key.GetValue("AppsUseLightTheme", 1) != 1;
 		}
 
 		public static void UseImmersiveDarkMode(Form form, bool enabled)
 		{
 			if (form.IsHandleCreated)
 			{
-				if (UseImmersiveDarkMode(form.Handle, enabled))
-				{
-					// Hack: I have found no other way to redraw title bar
-					var borderStyle = form.FormBorderStyle;
-					form.FormBorderStyle = FormBorderStyle.None;
-					form.FormBorderStyle = borderStyle;
-				}
+				UseImmersiveDarkMode(form.Handle, enabled);
 			}
 			else
 			{
 				form.HandleCreated += (o, args) => UseImmersiveDarkMode(form.Handle, enabled);
 			}
 		}
-		
+
 		private static bool UseImmersiveDarkMode(IntPtr handle, bool enabled)
 		{
 			if (IsWindows10OrGreater(17763))
@@ -96,7 +90,7 @@ namespace KeeTheme
 		{
 			if (!WinUtil.IsAtLeastWindows10)
 				return false;
-			
+
 			try
 			{
 				var registryKey = Registry.LocalMachine.OpenSubKey("SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion", false);
